@@ -29,7 +29,12 @@
                 Int32.Parse(ddlDay.SelectedItem.Value));
 
             TimeSpan ts = DateTime.Today.Subtract(dob);
-            lblAge.Text = String.Format("{0} Years Old!", ts.Days / 365);
+            int years = ts.Days / 365;
+            int months = ts.Days % 365 / 30;
+            int days = ts.Days % 365 % 30;
+
+            lblAge.Text = String.Format("{0} Years {1} Months and {2} Days Old!", 
+                 years, months, days);
         }
         catch(ArgumentOutOfRangeException ex)
         {
